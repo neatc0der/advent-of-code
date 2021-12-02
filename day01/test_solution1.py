@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-from typing import List
+from typing import Dict, List
 from unittest import main, TestCase
 
-from code01_1 import solve
+from solution1 import solve
 
 
 class Tests01_1(TestCase):
@@ -52,7 +52,7 @@ class Tests01_1(TestCase):
 
     def test_invalid_line_forces_exception(self) -> None:
         with self.assertRaises(RuntimeError):
-            result: Dict[str, int] = solve(["not a number"], key_inc="inc")
+            solve(["not a number"], key_inc="inc")
 
 
 if __name__ == "__main__":

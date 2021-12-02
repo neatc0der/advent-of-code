@@ -1,0 +1,6 @@
+ __pycache__
+*.pyc
+*.pyo
+
+.DStore
+._.DS_Store

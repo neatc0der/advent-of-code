@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-import sys
-from pathlib import Path
 from typing import Callable, Dict, List, Optional
 
 

@@ -1,7 +1,8 @@
 #!/usr/bin/env python
+from typing import List
 from unittest import main, TestCase
 
-from code01_2 import prepare, solve
+from solution2 import prepare, solve
 
 
 class Tests01_2(TestCase):

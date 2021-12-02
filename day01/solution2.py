@@ -1,9 +1,7 @@
 #!/usr/bin/env python
-import sys
-from pathlib import Path
-from typing import Callable, Dict, List, Optional
+from typing import Dict, List, Optional
 
-from code01_1 import solve as solve01_1
+from solution1 import solve as solve1
 
 
 def prepare(lines: List[int]) -> List[int]:
@@ -12,8 +10,9 @@ def prepare(lines: List[int]) -> List[int]:
 
     new_numbers: List[int] = []
 
+    window_size: int = 3
     window: int = 0
-    windows: List[Optional[int]] = [None] * 3
+    windows: List[Optional[int]] = [None] * window_size
     for i, number in enumerate(lines):
         if not isinstance(number, int):
             raise RuntimeError(f"invalid input in line {i}: '{number}' (not an int)")
@@ -28,7 +27,7 @@ def prepare(lines: List[int]) -> List[int]:
             else:
                 windows[w] += number
 
-        window = (window + 1) % len(windows)
+        window = (window + 1) % window_size
 
         if windows[window] is not None:
             new_numbers.append(windows[window])
@@ -39,5 +38,5 @@ def prepare(lines: List[int]) -> List[int]:
 
 def solve(lines: List[int], **kwargs) -> Dict[str, int]:
     new_lines: List[int] = prepare(lines)
-    return solve01_1(new_lines, **kwargs)
+    return solve1(new_lines, **kwargs)
 

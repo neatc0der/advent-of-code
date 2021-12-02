@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 import sys
 from pathlib import Path
-from typing import Callable, Dict, List, Optional
+from typing import List
 
-from code01_1 import solve as solve01_1
-from code01_2 import solve as solve01_2
+from solution1 import solve as solve1
+from solution2 import solve as solve2
+
 
 def main():
     path: Path = Path("input.txt")
@@ -16,7 +17,7 @@ def main():
         lines: List[str] = fp.readlines()
 
     try:
-        numbers = list(
+        numbers: List[int] = list(
             int(line)
             for line in lines
         )
@@ -24,11 +25,11 @@ def main():
         print("invalid input: all lines must contain integers")
         sys.exit(3)
 
-    print("run: solve01_1")
-    print(solve01_1(numbers))
+    print("run: solve1 (Day 01, part 1)")
+    print("->", solve1(numbers, key_inc="inc")["inc"])
 
-    print("run: solve01_2")
-    print(solve01_2(numbers))
+    print("run: solve2 (Day 01, part 2)")
+    print("->", solve2(numbers, key_inc="inc")["inc"])
 
 
 if __name__ == "__main__":
