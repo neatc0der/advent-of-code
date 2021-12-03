@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from typing import Dict, List, Optional
 
-from solution1 import solve as solve1
+from .solution1 import solve as solve1
 
 
 def prepare(lines: List[int]) -> List[int]:

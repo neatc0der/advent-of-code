@@ -2,13 +2,29 @@
 from typing import List
 from unittest import main, TestCase
 
-from solution2 import command_factory, prepare, solve, SubmarineAimCommand, SubmarineAimPosition
+from .solution2 import command_factory, prepare, solve, SubmarineAimCommand, SubmarineAimPosition
 
 
-class Tests02_2(TestCase):
-    def test_command_factory_invalid(self) -> None:
-        with self.assertRaises(RuntimeError):
+class Tests2021_02_2(TestCase):
+    def test_command_factory_invalid_input_raises_error(self) -> None:
+        with self.assertRaises(AssertionError):
+            command_factory(8)
+
+    def test_command_factory_invalid_content_raises_error(self) -> None:
+        with self.assertRaises(AssertionError):
             command_factory("forward5")
+
+    def test_command_factory_invalid_parameter_count_raises_error(self) -> None:
+        with self.assertRaises(AssertionError):
+            command_factory("forward 1 2")
+
+    def test_command_factory_invalid_parameter_raises_error(self) -> None:
+        with self.assertRaises(AssertionError):
+            command_factory("forward a")
+
+    def test_command_factory_unknown_raises_error(self) -> None:
+        with self.assertRaises(AssertionError):
+            command_factory("unknown 8")
 
     def test_command_factory_forward(self) -> None:
         command: SubmarineAimCommand = command_factory("forward 5")
@@ -22,9 +38,25 @@ class Tests02_2(TestCase):
         command: SubmarineAimCommand = command_factory("down 8")
         self.assertEqual(command, SubmarineAimCommand(aim=+8))
 
-    def test_command_factory_unknown(self) -> None:
-        with self.assertRaises(RuntimeError):
-            command_factory("unknown 8")
+    def test_prepare_invalid_input_raises_error(self) -> None:
+        with self.assertRaises(AssertionError):
+            prepare("hello")
+
+    def test_prepare(self) -> None:
+        commands: SubmarineAimCommand = prepare(["forward 5", "up 3", "down 8"])
+        self.assertEqual(commands, [
+            SubmarineAimCommand(horizontal=5),
+            SubmarineAimCommand(aim=-3),
+            SubmarineAimCommand(aim=8),
+        ])
+
+    def test_solve_invalid_input_raises_error(self) -> None:
+        with self.assertRaises(AssertionError):
+            solve("hello")
+
+    def test_solve_invalid_command_raises_error(self) -> None:
+        with self.assertRaises(AssertionError):
+            solve(["hello"])
 
     def test_position_horizontal_positive(self) -> None:
         position: SubmarineAimPosition = SubmarineAimPosition(horizontal=3, aim=3, depth=3)

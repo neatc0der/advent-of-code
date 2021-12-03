@@ -1,14 +1,15 @@
 #!/usr/bin/env python
+import os
 import sys
 from pathlib import Path
 from typing import List
 
-from solution1 import solve as solve1
-from solution2 import solve as solve2
+from .solution1 import solve as solve1
+from .solution2 import solve as solve2
 
 
 def main():
-    path: Path = Path("input.txt")
+    path: Path = Path(os.path.dirname(__file__), "input.txt")
     if not path.exists() or not path.is_file():
         print("argument is not a valid file path")
         sys.exit(2)

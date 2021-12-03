@@ -1,14 +1,15 @@
 #!/usr/bin/env python
+import os
 import sys
 from pathlib import Path
 from typing import List
 
-from solution1 import prepare as prepare1, solve as solve1, SubmarineCommand, SubmarinePosition
-from solution2 import prepare as prepare2, solve as solve2, SubmarineAimCommand, SubmarineAimPosition
+from .solution1 import prepare as prepare1, solve as solve1, SubmarineCommand, SubmarinePosition
+from .solution2 import prepare as prepare2, solve as solve2, SubmarineAimCommand, SubmarineAimPosition
 
 
 def main():
-    path: Path = Path("input.txt")
+    path: Path = Path(os.path.dirname(__file__), "input.txt")
     if not path.exists() or not path.is_file():
         print("argument is not a valid file path")
         sys.exit(2)
@@ -30,10 +31,9 @@ def main():
     print("run: solve1 (Day 02, part 1)")
     print("->", position1.horizontal * position1.depth)
 
-    print("run: solve1 (Day 02, part 2)")
+    print("run: solve2 (Day 02, part 2)")
     print("->", position2.horizontal * position2.depth)
 
 
 if __name__ == "__main__":
     main()
-

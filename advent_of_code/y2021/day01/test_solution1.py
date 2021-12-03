@@ -2,10 +2,10 @@
 from typing import Dict, List
 from unittest import main, TestCase
 
-from solution1 import solve
+from .solution1 import solve
 
 
-class Tests01_1(TestCase):
+class Tests2021_01_1(TestCase):
     def test_example(self) -> None:
         example_text: str = """
         199
