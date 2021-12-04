@@ -1,4 +1,4 @@
-from math import ceil, log2, pow
+from math import pow
 from typing import List, List
 
 import attr
